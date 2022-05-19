@@ -12,11 +12,11 @@ while (( $currentLines - $contrastor > 0 ))
 do
 	searchdex=1
 	wordToBeSearched=$(awk "NR==$currentLines - $contrastor" $history | cut -d ";" -f 2)
-	echo "$wordToBeSearched A BUSCAR"
+#	echo "$wordToBeSearched A BUSCAR"
 	while (( $currentLines - $contrastor - $searchdex > 0 ))
 	do
 		currentWord=$(awk "NR==$currentLines - $contrastor - $searchdex" $history | cut -d ";" -f 2)
-		echo $currentWord
+#		echo $currentWord
 		if test "$currentWord" == "$wordToBeSearched"
 		then
 			sed -i .bak "$((currentLines - $contrastor - $searchdex)) d" $history
@@ -28,4 +28,4 @@ do
 	done
 	let "contrastor++"
 done
-# sed "$((currentLines-2)) d" $history #Currently successful at removing the last line. -i will change the history file.
+echo "Lines after cleanup: $currentLines"
