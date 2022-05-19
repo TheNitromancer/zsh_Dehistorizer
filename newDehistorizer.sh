@@ -37,10 +37,18 @@ cat $history > $temp
 # Store the amount of lines of the file
 numOlines=$(grep -c "^" $temp)
 
+# Create the output file
+touch $newFile
+
 # Cicle each line
 while [[ "$counter" -le "$numOlines" ]]
 do
 	currentLine=$(awk "NR==$counter" $temp)
 	currentWord=$(echo $currentLine | cut -d ";" -f2-)
+	if [[ $(grep -c "$currentWord" $newFile) -eq 0 ]]
+	then
+		echo "no ta $currentLine"
+		sed -i '' "1s/^/$currentLine/" $newFile
+	fi
 	((counter += 1))
 done
