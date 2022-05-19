@@ -1,6 +1,6 @@
 #!/bin/sh
 
-history=./prueba
+history=./.zsh_history
 temp=./temp_zsh_history
 newFile=./new_zsh_history
 
