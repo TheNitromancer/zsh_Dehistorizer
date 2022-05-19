@@ -1,27 +1,6 @@
 #!/bin/sh
 
-# history=./.zsh_history
-# newFile=./tempHist
-# numOlines=$(grep -c "^" $history)
-# lineOffset=0
-# currentWord=""
-# ocurrences=0
-#
-# # Delete spureus lines
-# #sed '/^:/!d' $history
-#
-# # Get words from the bottom up
-# currentWord=$(awk "NR==$numOlines-$lineOffset" $history | cut -d ";" -f2-)
-#
-# # Count how many ocurrences it has
-# ocurrences=$(grep -c ":0;$currentWord$" $newFile)
-
-# If the command isn't already in the new file, append it
-
-
-#!/bin/sh
-
-history=./prueba
+history=./.zsh_history
 temp=./temp_zsh_history
 newFile=./new_zsh_history
 
@@ -58,3 +37,6 @@ sed -i '' 's/ ºªºªº /\
 
 # Delete empty lines
 sed -i '' "/^$/d" $newFile
+
+# Remove temp file
+rm $temp
